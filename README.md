@@ -41,11 +41,6 @@ Supervisor flow: calculation_agent -> negotiation -> readiness_agent -> planning
 - Offers alternate: Ambitious offers -> Realistic accepts or counters -> Ambitious accepts or concedes. Offers within 0.5 h/day = agreement.
 - **Readiness agent** then compares agreed hours x days with the hours needed: FEASIBLE or "only X% - need N more days".
 
-### Jury questions
-**What stops the negotiation from running forever?** Three things: (1) a cap of 4 rounds; (2) a deadlock check - if neither agent can move any further (e.g. Ambitious floor 12 > Realistic ceiling 10) it stops early; (3) the supervisor's hop limit around the whole workflow.
-**Why does the cap exist?** Agents with fixed limits that never meet would swap offers forever. The cap guarantees it ends.
-**Which agent wins and why?** If the hours needed are already comfortable: nobody (no conflict). If they meet in the middle: the transcript says which agent's opening offer the result is closer to. If it stops (cap/deadlock): the **Realistic agent wins**, because its 10 h/day limit is a safety rule - the plan never exceeds it - and the Readiness agent then honestly reports the shortfall.
-
 ## Honest limitations
 - Negotiation and supervisor are rule-based on purpose (predictable, testable); the LLM only writes the plan text.
 - One topic per line is required for syllabus parsing; the topic count is the number of lines, not understood by the model.
